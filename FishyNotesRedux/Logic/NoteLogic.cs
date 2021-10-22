@@ -44,10 +44,10 @@ namespace FishyNotesRedux.Logic
             // Declare new _noteView
             // Call it "_noteView"
             // Instantiate new _noteView
-            //FishyNote _noteView = new FishyNote();
+            FishyNote _noteView = new FishyNote();
 
             // Show _noteView
-            //_noteView.Show();
+            _noteView.Show();
         }
 
         /// <summary>
