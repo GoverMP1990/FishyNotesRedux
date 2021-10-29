@@ -41,6 +41,9 @@ namespace FishyNotesRedux
         // Declare delegate for retrieving dictionary length
         DictLenDel _dictLenDel;
 
+        // Declare delegate for deleting notes
+        DeleteNoteDelegate _deleteNoteDelegate;
+
         /// <summary>
         /// FishyNotes class constructor
         /// </summary>
@@ -57,6 +60,8 @@ namespace FishyNotesRedux
 
             // Assign _dictLenDel to _noteData.GetLen method
             _dictLenDel = _noteData.GetLen;
+
+            _deleteNoteDelegate = _noteData.DelNote;
 
             InitializeComponent();
         }
@@ -77,7 +82,7 @@ namespace FishyNotesRedux
 
             // Initialise _noteView by calling its init method and passing:
             // _noteIndex, _noteLogic, _noteLogic, _noteData, _noteDel
-            _noteView.init(_noteIndex, _noteLogic, _noteData, _noteDel, _getNoteDel, _dictLenDel);
+            _noteView.init(_noteIndex, _noteLogic, _noteData, _noteDel, _getNoteDel, _dictLenDel, _deleteNoteDelegate);
 
             // Increment noteIndex value
             _noteIndex++;

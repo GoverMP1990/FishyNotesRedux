@@ -63,10 +63,28 @@ namespace FishyNotesRedux.Storage
             
         }
 
+        /// <summary>
+        /// METHOD : GetLen
+        /// DESC : returns the length of the dictionary
+        /// </summary>
+        /// <param name="pKey"></param>
+        /// <returns></returns>
         public int GetLen(int pKey)
         {
             int _dictLength = _noteText.Count;
             return _dictLength;
+        }
+
+        public void DeleteNote(int pKey)
+        {
+            //_noteText.Remove(pKey);
+
+            Console.WriteLine("Removing note : " + pKey);
+
+            for(int i = pKey; i < _noteText.Count; i++)
+            {
+                Console.WriteLine("");
+            }
         }
     }
 }

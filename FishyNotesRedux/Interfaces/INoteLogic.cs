@@ -13,7 +13,7 @@ namespace FishyNotesRedux.Interfaces
         // Initialise method
         // Initialise class with a list of INoteData type objects
         //public void Initialise(int pNoteIndex, INoteData pNoteData, NoteDel pNoteDel);
-        public void Initialise(int pNoteIndex, NoteDel pNoteDel, DictLenDel pDictLen);
+        public void Initialise(int pNoteIndex, NoteDel pNoteDel, DictLenDel pDictLen, DeleteNoteDelegate pDeleteNoteDelegate);
 
         // Add note method
         // Create a new blank note

@@ -32,6 +32,9 @@ namespace FishyNotesRedux.Logic
         // Declare string for storing text data
         private string _noteText;
 
+        // Declare delegate for deleting notes
+        private DeleteNoteDelegate _deleteNoteDelegate;
+
         /// <summary>
         /// Paramaterless constructor for NoteLogic class
         /// </summary>
@@ -45,7 +48,7 @@ namespace FishyNotesRedux.Logic
         /// DESC : Initialise this class with a list of notes
         /// </summary>
         /// <param name="pNoteIndex"> The index value for this note </param>
-        public void Initialise(int pNoteIndex, NoteDel pNoteDel, DictLenDel pDictLen)
+        public void Initialise(int pNoteIndex, NoteDel pNoteDel, DictLenDel pDictLen, DeleteNoteDelegate pDeleteNoteDelegate)
         {
             // Set _noteIndex to pNoteIndex
             _noteIndex = pNoteIndex;
@@ -53,6 +56,10 @@ namespace FishyNotesRedux.Logic
             _noteDel = pNoteDel;
 
             _dictLenDel = pDictLen;
+
+            _deleteNoteDelegate = pDeleteNoteDelegate;
+
+            _noteDel(_noteIndex, "");
 
             Console.WriteLine("My index value is : " + _noteIndex);
         }

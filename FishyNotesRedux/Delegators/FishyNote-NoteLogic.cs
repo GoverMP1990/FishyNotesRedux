@@ -12,4 +12,6 @@ namespace FishyNotesRedux.Delegators
     public delegate string GetNoteDel(int key);
 
     public delegate int DictLenDel(int key);
+
+    public delegate void DeleteNoteDelegate(int key);
 }

@@ -35,7 +35,11 @@ namespace FishyNotesRedux.Forms
         // Declare a GetNoteDel delegate for getting stored notes from data element
         private GetNoteDel _getNoteDel;
 
+        // Delcare a delegate for obtaining dictionary length
         private DictLenDel _dictLenDel;
+
+        // Delcare a delegate for deleting notes
+        private DeleteNoteDelegate _deleteNoteDelegate;
 
         /// <summary>
         /// FishyNote class constructor
@@ -54,7 +58,7 @@ namespace FishyNotesRedux.Forms
         /// <param name="pNoteData"> DataElement class that stores note data </param>
         /// <param name="pNoteDel"> Delegate that gives access to note data method - SetNote </param>
         /// <param name="pGetNoteDel"> Delegate for getting the note stored in the dictionary in data element </param>
-        public void init(int pNoteIndex, INoteLogic pFishyNote, INoteData pNoteData, NoteDel pNoteDel, GetNoteDel pGetNoteDel, DictLenDel pDictLenDel)
+        public void init(int pNoteIndex, INoteLogic pFishyNote, INoteData pNoteData, NoteDel pNoteDel, GetNoteDel pGetNoteDel, DictLenDel pDictLenDel, DeleteNoteDelegate pDeleteNoteDelegate)
         {
             // Set _noteIndex to pNoteIndex
             _noteIndex = pNoteIndex;
@@ -71,7 +75,11 @@ namespace FishyNotesRedux.Forms
             // Set _getNoteDel to pGetNoteDel
             _getNoteDel = pGetNoteDel;
 
+            // Set _dictLenDel to pDictLenDel
             _dictLenDel = pDictLenDel;
+
+            // Set _deleteNoteDelegate to pDeleteNoteDelegate
+            _deleteNoteDelegate = pDeleteNoteDelegate;
 
             // Initialise note logic
             _noteLogic.Initialise(_noteIndex, _noteDel, _dictLenDel);
@@ -85,11 +93,18 @@ namespace FishyNotesRedux.Forms
             
         }
 
+        /// <summary>
+        /// METHOD : ShowNote
+        /// DESC : Prints the note to the console
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ShowNote(object sender, EventArgs e)
         {
             //_noteLogic.ViewNote(_noteIndex);
             Console.WriteLine(_getNoteDel(_noteIndex));
         }
+
 
         private void updateText(object sender, EventArgs e)
         {
@@ -97,6 +112,15 @@ namespace FishyNotesRedux.Forms
             _noteLogic.ChangeNote(_noteIndex, richTextBox1.Text);
         }
 
+        /// <summary>
+        /// METHOD : next
+        /// DESC : Responds to next button being clicked on the form
+        /// Retrieves the index value of the note logic class
+        /// Calls the note logic method to increment the index value
+        /// Sets the contents of the rich text box to the contents of the dicitionary in the data element class using the note index value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _next(object sender, EventArgs e)
         {
             //_noteIndex+=1;
@@ -108,6 +132,15 @@ namespace FishyNotesRedux.Forms
             richTextBox1.Text = _getNoteDel(_noteIndex);
         }
 
+        /// <summary>
+        /// METHOD : previous
+        /// DESC : Responds to previous button being clicked on the form
+        /// Retrieves the index value of the note logic class
+        /// Calls the note logic method to increment the index value
+        /// Sets the contents of the rich text box to the contents of the dicitionary in the data element class using the note index value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _previous(object sender, EventArgs e)
         {
             /*
