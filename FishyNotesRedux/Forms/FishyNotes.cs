@@ -61,7 +61,7 @@ namespace FishyNotesRedux
             // Assign _dictLenDel to _noteData.GetLen method
             _dictLenDel = _noteData.GetLen;
 
-            _deleteNoteDelegate = _noteData.DelNote;
+            _deleteNoteDelegate = _noteData.DeleteNote;
 
             InitializeComponent();
         }

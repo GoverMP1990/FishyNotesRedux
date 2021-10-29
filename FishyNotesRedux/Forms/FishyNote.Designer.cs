@@ -83,8 +83,9 @@ namespace FishyNotesRedux.Forms
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(166, 23);
             this.deleteButton.TabIndex = 4;
-            this.deleteButton.Text = "Console Print";
+            this.deleteButton.Text = "Delete note";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.DeleteNote);
             // 
             // FishyNote
             // 

@@ -83,8 +83,28 @@ namespace FishyNotesRedux.Storage
 
             for(int i = pKey; i < _noteText.Count; i++)
             {
-                Console.WriteLine("");
+                Console.WriteLine("Text : " + _noteText[i] + " at index : " + i);
+                if (i + 1 < _noteText.Count)
+                { _noteText[i] = _noteText[i + 1]; }
+                Console.WriteLine("Changed to : " + _noteText[i]);
             }
+            _noteText.Remove(_noteText.Count - 1);
+
+            /// Test loops to prove reshuffling concept
+            //int[] k = new int[_noteText.Count];
+
+            //for(int i = 0; i < _noteText.Count; i++)
+            //{
+            //    k[i] = i;
+            //    Console.WriteLine("Test value : " + k[i] + " created");
+            //}
+
+            //for(int i = pKey+1; i < _noteText.Count; i++)
+            //{
+            //    Console.Write("Test value : " + k[i]);
+            //    k[i] = i - 1;
+            //    Console.WriteLine(" Changed to : " + k[i]);
+            //}
         }
     }
 }

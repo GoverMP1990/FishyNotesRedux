@@ -86,7 +86,8 @@ namespace FishyNotesRedux.Logic
         /// <param name="pIndex"></param>
         public void DeleteNote(int pIndex)
         {
-
+            //Console.WriteLine("Deletion for note " + pIndex + " issued");
+            _deleteNoteDelegate(pIndex);
         }
 
         /// <summary>

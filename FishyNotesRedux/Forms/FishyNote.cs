@@ -82,7 +82,7 @@ namespace FishyNotesRedux.Forms
             _deleteNoteDelegate = pDeleteNoteDelegate;
 
             // Initialise note logic
-            _noteLogic.Initialise(_noteIndex, _noteDel, _dictLenDel);
+            _noteLogic.Initialise(_noteIndex, _noteDel, _dictLenDel, _deleteNoteDelegate);
 
             // Display this form
             this.Show();
@@ -159,6 +159,11 @@ namespace FishyNotesRedux.Forms
             Console.WriteLine("Index after changing : " + _noteIndex);
 
             richTextBox1.Text = _getNoteDel(_noteIndex);
+        }
+
+        private void DeleteNote(object sender, EventArgs e)
+        {
+            _noteLogic.DeleteNote(_noteIndex);
         }
     }
 }

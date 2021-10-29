@@ -17,5 +17,7 @@ namespace FishyNotesRedux.Interfaces
         public void DelNote(int pKey);
 
         public int GetLen(int pKey);
+
+        public void DeleteNote(int pKey);
     }
 }
