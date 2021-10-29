@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 
+// Program packages
+using FishyNotesRedux.Delegators;
+
 namespace FishyNotesRedux.Interfaces
 {
-    interface INoteLogic
+    public interface INoteLogic
     {
 
         // Initialise method
         // Initialise class with a list of INoteData type objects
-        public void Initialise(List<INoteData> pNotes);
+        //public void Initialise(int pNoteIndex, INoteData pNoteData, NoteDel pNoteDel);
+        public void Initialise(int pNoteIndex, NoteDel pNoteDel, DictLenDel pDictLen);
 
         // Add note method
         // Create a new blank note
@@ -25,6 +29,11 @@ namespace FishyNotesRedux.Interfaces
 
         // Change existing note
         // Update the contents of the open note
-        public void ChangeNote(int pIndex);
+        public void ChangeNote(int pIndex, string pText);
+
+        public int Index { get; set; }
+
+        public int NextNote();
+        public int PreviousNote();
     }
 }

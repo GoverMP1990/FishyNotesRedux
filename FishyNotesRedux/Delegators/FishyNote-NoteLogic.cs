@@ -7,4 +7,9 @@ namespace FishyNotesRedux.Delegators
 
     public delegate String ADelegate(int arg);
 
+    public delegate void NoteDel(int key, string data);
+
+    public delegate string GetNoteDel(int key);
+
+    public delegate int DictLenDel(int key);
 }

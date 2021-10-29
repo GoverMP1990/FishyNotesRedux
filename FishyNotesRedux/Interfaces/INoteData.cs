@@ -4,13 +4,18 @@ using System.Text;
 
 namespace FishyNotesRedux.Interfaces
 {
-    interface INoteData
+    public interface INoteData
     {
 
         // Return note string text data
-        public string GetNote();
+        public string GetNote(int pKey);
 
         // Set note string text data
-        public void SetNote(string pText);
+        public void SetNote(int pKey, string pText);
+
+        // Delete note
+        public void DelNote(int pKey);
+
+        public int GetLen(int pKey);
     }
 }

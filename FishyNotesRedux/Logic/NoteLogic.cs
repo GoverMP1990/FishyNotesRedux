@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+
+// Program packages
 using FishyNotesRedux.Interfaces;
 using FishyNotesRedux.Forms;
+using FishyNotesRedux.Storage;
+using FishyNotesRedux.Delegators;
 
 namespace FishyNotesRedux.Logic
 {
@@ -15,24 +19,42 @@ namespace FishyNotesRedux.Logic
         // Call it "_notes"
         private List<INoteData> _notes;
 
+        // Declare new integer for note identity
+        // Call _noteIndex
+        private int _noteIndex;
+
+        // Declare delegate NoteDel called _noteDel
+        private NoteDel _noteDel;
+
+        // Declare delegate for DictLenDel called _dictLenDel
+        private DictLenDel _dictLenDel;
+
+        // Declare string for storing text data
+        private string _noteText;
+
         /// <summary>
         /// Paramaterless constructor for NoteLogic class
         /// </summary>
         public NoteLogic()
         {
-            // Instantiate _notes 
-            ///_notes = new List<INoteData>();
+
         }
 
         /// <summary>
         /// METHOD : Initialise
         /// DESC : Initialise this class with a list of notes
         /// </summary>
-        /// <param name="pNotes"></param>
-        public void Initialise(List<INoteData> pNotes)
+        /// <param name="pNoteIndex"> The index value for this note </param>
+        public void Initialise(int pNoteIndex, NoteDel pNoteDel, DictLenDel pDictLen)
         {
-            // Set _notes to pNotes
-            _notes = pNotes;
+            // Set _noteIndex to pNoteIndex
+            _noteIndex = pNoteIndex;
+
+            _noteDel = pNoteDel;
+
+            _dictLenDel = pDictLen;
+
+            Console.WriteLine("My index value is : " + _noteIndex);
         }
 
         /// <summary>
@@ -44,10 +66,10 @@ namespace FishyNotesRedux.Logic
             // Declare new _noteView
             // Call it "_noteView"
             // Instantiate new _noteView
-            FishyNote _noteView = new FishyNote();
+            //FishyNote _noteView = new FishyNote();
 
             // Show _noteView
-            _noteView.Show();
+            //_noteView.Show();
         }
 
         /// <summary>
@@ -67,7 +89,7 @@ namespace FishyNotesRedux.Logic
         /// <param name="pIndex"></param>
         public void ViewNote(int pIndex)
         {
-
+            
         }
 
         /// <summary>
@@ -75,9 +97,48 @@ namespace FishyNotesRedux.Logic
         /// DESC : Change the contents of the note for the given index value
         /// </summary>
         /// <param name="pIndex"></param>
-        public void ChangeNote(int pIndex)
+        public void ChangeNote(int pIndex, string pText)
+        {
+            // Use the delegate for setting note text in the data element
+            // Pass it the pIndex and pText parameters
+            _noteDel(pIndex, pText);
+        }
+
+        public int NextNote()
         {
 
+
+            if (_noteIndex+1 >= _dictLenDel(0))
+            {
+                _noteIndex = _dictLenDel(0) - 1;
+            }
+            else
+            {
+                _noteIndex += 1;
+            }
+
+            return _noteIndex;
+        }
+
+        public int PreviousNote()
+        {
+            if (_noteIndex - 1 < 0)
+            {
+                _noteIndex = 0;
+            }
+            else
+            {
+               _noteIndex -= 1;
+            }
+
+            return _noteIndex;
+        }
+
+        // Public property access for the _noteIndex value
+        public int Index
+        {
+            get { return _noteIndex; }
+            set { _noteIndex = value; }
         }
     }
 }
